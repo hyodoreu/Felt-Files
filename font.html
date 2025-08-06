@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="manifest" href="site.webmanifest">
+        <link href="https://db.onlinewebfonts.com/c/2c5bdaf7fc7f22cc7df47b090dcc5545?family=ManifontGroteskBook" rel="stylesheet">
+        <title>Felt-Files</title>
+        <style>
+            @font-face {
+                font-family: 'Manifont Grotesk Book';
+                font-style: normal;
+                font-weight: normal;
+                src: local('Manifont Grotesk Book'), url('ManifontGroteskBook.woff') format('woff');
+            }
+            body, html {
+                margin: 0;
+                padding: 0; 
+                height: 100vh; 
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+            body {
+               font-family: "ManifontGroteskBook";
+                font-size: 16px;
+                line-height: 23px;
+
+                background-color: #F2FF00;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .container {
+                display: flex;
+                height: 100vh;
+                overflow: hidden; 
+            }
+            .back{
+                width: 10vw;
+                position: absolute;
+                bottom: 10px;
+                right: 0;
+                transition: transform 0.3s ease;
+            }
+            .back:hover {
+                transform: rotate(15deg);
+            }
+            .left {
+                margin-top: 10px;
+                width: 8vw; 
+                overflow-y: scroll;
+                scrollbar-width: none;
+            }
+            .left::-webkit-scrollbar {
+                display: none;
+            }
+            .left img {
+                width: 70%; 
+                cursor: pointer;
+                display: block;
+                margin: 0 auto; 
+                padding-bottom:20px;
+            }
+
+            .center {
+                width: 65vw; 
+                position: relative;
+                overflow: hidden;
+            }
+
+            .center img {
+                position: absolute;
+                cursor: pointer;
+                max-width: 40vw;
+                max-height: 40vh;
+            }
+
+            .right {
+                width: 27vw;
+                flex: 1;
+                overflow-y: scroll;
+                scrollbar-width: none;
+                padding: 10px;
+                margin-right: 0.5vw;
+            }
+
+            .right::-webkit-scrollbar {
+                display: none;
+            }
+            .right img {
+                
+                max-width: 100%;
+                height: auto;
+                display: block;
+                object-fit: contain;
+
+            }
+            .right p {
+                line-height: 40px;
+                padding:0;
+                font-size: 32px;
+                color: rgb(255, 0, 13);
+                word-break: keep-all;
+                text-align: justify;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                letter-spacing: 4px;
+                overflow-wrap: break-word;
+            }
+            @media (max-width: 768px) {
+                .center {
+                width: 55vw; 
+                position: relative;
+                overflow: hidden;
+                }
+
+                .center img {
+                    position: absolute;
+                    cursor: pointer;
+                    max-width: 40vw;
+                    max-height: 40vh;
+                }
+
+                .right {
+                    width: 37vw;
+                    flex: 1;
+                    overflow-y: scroll;
+                    scrollbar-width: none;
+                    padding: 10px;
+                    margin-right: 0.5vw;
+                }
+                .right p {
+                    font-size: 5vw;   
+                    line-height: 1.3em;
+                    letter-spacing: 1px; 
+                }
+                .back{
+                    width: 18vw;
+                }
+            }
+            @media (max-width: 768px) {
+                .right {
+                    width: 100vw; 
+                    padding: 10px;
+                    margin-right: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <a href="file.html" target="_self"><img src="img/back.png" class="back"></a>
+            <div class="left" id="left-panel"></div>
+
+            <div class="center" id="center"></div>
+
+            <div class="right">
+                <img src="font/tt.png">
+                <p>
+                    Got some wool balls lying around at home,
+                    and when you bunch them up—boom! Adorable, super-textured font vibes.
+                    Ended up making like 40 wool balls and turned them into a font.
+                    My fave letters? a, g, and t!
+                </p>
+                <p>
+                    **Would totally share the font file, but Fontself is bugging out so I can’t export it as OTF.**
+                </p>
+                </br></br></br></br></br></br>
+
+            </div>
+        </div>
+
+        <script>
+            
+            const leftPanel = document.getElementById('left-panel');
+
+            // 1) a~z
+            for (let i = 97; i <= 122; i++) { // a=97, z=122
+                const char = String.fromCharCode(i);
+                const img = document.createElement('img');
+                img.src = `font/${char}.png`;
+                img.alt = char;
+                leftPanel.appendChild(img);
+            }
+
+            // 2) 숫자 0~9
+            for (let i = 0; i <= 9; i++) {
+                const img = document.createElement('img');
+                img.src = `font/${i}.png`;
+                img.alt = i;
+                leftPanel.appendChild(img);
+            }
+
+            // 3) add 
+            const extraFiles = ["&", "느낌표", "물음표", "@", "~", "^", "dot", "별", "샾", "나누기", "(", ")"]; // 여기 직접 원하는 파일명 넣기
+            extraFiles.forEach(name => {
+                const img = document.createElement('img');
+                img.src = `font/${name}.png`;
+                img.alt = name;
+                leftPanel.appendChild(img);
+            });
+
+
+            const leftImages = document.querySelectorAll('.left img');
+            const center = document.getElementById('center');
+            let firstClick = true;
+
+            leftImages.forEach(img => {
+            img.addEventListener('click', () => {
+                const clone = img.cloneNode();
+
+                if (window.innerWidth <= 768) {
+                clone.style.maxWidth = '45vw';
+                clone.style.maxHeight = '45vw';
+                } else {
+                clone.style.maxWidth = '30vw';
+                clone.style.maxHeight = '30vw';
+                }
+
+                center.appendChild(clone);
+                const imgRect = clone.getBoundingClientRect();
+                const imgWidth = imgRect.width || 200;
+                const imgHeight = imgRect.height || 200;
+                clone.remove();
+
+                if (firstClick) {
+                clone.style.top = '50%';
+                clone.style.left = '50%';
+                clone.style.transform = 'translate(-50%, -50%)';
+                firstClick = false;
+                } else {
+                const maxX = center.clientWidth - imgWidth;
+                const maxY = center.clientHeight - imgHeight;
+                const randX = Math.random() * maxX;
+                const randY = Math.random() * maxY;
+                clone.style.top = randY + 'px';
+                clone.style.left = randX + 'px';
+                }
+
+                clone.addEventListener('click', () => {
+                clone.remove();
+                });
+
+                center.appendChild(clone);
+            });
+            });
+
+
+
+            
+        </script>
+    </body>
+</html>
